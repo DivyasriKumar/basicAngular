@@ -1,16 +1,39 @@
 :host {
   display: block;
   flex-shrink: 0;
+  height: 60px;
 }
 
 .query-box {
   display: flex;
   align-items: center;
   padding: 8px 16px;
-  border-top: 1px solid #ddd;
+  /* border-top: 1px solid #ddd; */
   background-color: transparent;
   height: 60px; /* Compact fixed height */
   box-sizing: border-box;
+  resize: none;
+  overflow: hidden;
+  line-height: 24px;
+  box-sizing: border-box;
+  max-height: 48px; /* 2 lines */
+}
+
+.query-box textarea {
+  flex: none;              /* Prevent flex from stretching */
+  width: 95%;            /* ✅ Set your desired fixed width */
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-right: 10px;
+  outline: none;
+
+  resize: none;
+  overflow-y: auto;
+  line-height: 24px;
+  box-sizing: border-box;
+  height: 50px;        /* 2 lines max */
 }
 
 .query-box input {

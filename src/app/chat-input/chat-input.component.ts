@@ -15,4 +15,11 @@ export class ChatInputComponent {
       this.query = '';
     }
   }
+  adjustHeight(textArea: HTMLTextAreaElement) {
+  textArea.style.height = 'auto'; // reset
+  const maxHeight = 2 * 24; // assuming line-height ~24px
+  const newHeight = Math.min(textArea.scrollHeight, maxHeight);
+  textArea.style.height = `${newHeight}px`;
+  textArea.style.overflowY = textArea.scrollHeight > maxHeight ? 'scroll' : 'hidden';
+}
 }
