@@ -4,7 +4,7 @@
   margin-top: 80px; 
   margin-bottom: 80px;
   padding: 40px 20px;
-  padding-bottom: 0px;
+  /* padding-bottom: 0px; */
   background-color: #f5f7fa;
   border-radius: 15px;
   overflow-y: auto;
