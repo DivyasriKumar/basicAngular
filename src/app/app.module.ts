@@ -6,13 +6,17 @@ import { FileExportComponent } from './file-export/file-export.component';
 import { EvidenceTableComponent } from './evidence-table/evidence-table.component';
 import { QueryInputComponent } from './query-input/query-input.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FileExportComponent,
     EvidenceTableComponent,
-    QueryInputComponent
+    QueryInputComponent,
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
