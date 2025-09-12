@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  goChat() {
+    this.router.navigate(['/chat']);
+  }
+  goProfile() {
+   
+  }
+  goHome() {
+     this.router.navigate(['/']);
+  }
+  isLoggedIn = false;
+  constructor(private router: Router) { }
   login() {
-    console.log('Login clicked');
-    // TODO: Navigate to login page or trigger auth flow
+    this.router.navigate(['/chat']);
+    this.isLoggedIn = true;
   }
 }

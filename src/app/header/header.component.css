@@ -53,3 +53,25 @@ button {
   cursor: pointer;
   font-weight: 500;
 }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  font-size: 24px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.icon:hover {
+  color: #00bfa5;
+}
+
+.icon-container {
+  display: flex;
+  gap: 16px;
+}
