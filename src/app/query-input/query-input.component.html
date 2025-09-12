@@ -1,6 +1,9 @@
-<!-- query-input.component.html -->
 <div class="query-box">
-  <h2>Ask Your Audit Question</h2>
-  <input type="text" [(ngModel)]="query" placeholder="e.g. Why was PR #456 merged without approval?" />
-  <button (click)="submitQuery()">Submit</button>
+  <input
+    type="text"
+    [(ngModel)]="query"
+    placeholder="e.g. Why was PR #456 merged without approval?"
+    (keyup.enter)="submitQuery()"
+  />
+  <span class="arrow" (click)="submitQuery()">&#10148;</span>
 </div>
