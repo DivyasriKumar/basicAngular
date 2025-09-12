@@ -1,0 +1,7 @@
+.chat-container {
+  height: 450px; /* Fixed height */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}

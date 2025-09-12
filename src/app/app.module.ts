@@ -8,6 +8,9 @@ import { QueryInputComponent } from './query-input/query-input.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { ChatComponent } from './chat/chat.component';
+import { ChatInputComponent } from './chat-input/chat-input.component';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { HomeComponent } from './home/home.component';
     EvidenceTableComponent,
     QueryInputComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ChatComponent,
+    ChatInputComponent,
+    ChatWindowComponent
   ],
   imports: [
     BrowserModule,

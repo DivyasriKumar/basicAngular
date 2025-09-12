@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  flex-shrink: 0;
+}
+
+.query-box {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-top: 1px solid #ddd;
+  background-color: transparent;
+  height: 60px; /* Compact fixed height */
+  box-sizing: border-box;
+}
+
+.query-box input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-right: 10px;
+  outline: none;
+}
+
+.arrow {
+  font-size: 20px;
+  color: #2c2b2b;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.arrow:hover {
+  color: #00bfa5;
+}

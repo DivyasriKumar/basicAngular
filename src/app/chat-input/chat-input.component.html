@@ -1,0 +1,9 @@
+<div class="query-box">
+  <input
+    type="text"
+    [(ngModel)]="query"
+    placeholder="Type your message..."
+    (keyup.enter)="submitQuery()"
+  />
+  <span class="arrow" (click)="submitQuery()">&#10148;</span>
+</div>

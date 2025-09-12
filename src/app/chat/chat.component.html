@@ -1,0 +1,4 @@
+<div class="chat-container">
+  <app-chat-window [messages]="messages"></app-chat-window>
+  <app-chat-input (messageSent)="handleMessage($event)"></app-chat-input>
+</div>
