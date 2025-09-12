@@ -43,8 +43,9 @@
 }
 :host {
   flex: 1;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
   padding: 16px;
+  box-sizing: border-box;
 }

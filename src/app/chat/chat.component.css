@@ -1,5 +1,7 @@
 .chat-container {
-  height: 450px; /* Fixed height */
+   min-height: 450px;
+  height: 100%;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   border: 1px solid #ccc;

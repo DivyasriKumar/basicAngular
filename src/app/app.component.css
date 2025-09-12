@@ -10,4 +10,10 @@
   overflow-y: auto;
   height: calc(100vh - 200px);
   position: relative;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.container::-webkit-scrollbar {
+  display: none; 
 }
