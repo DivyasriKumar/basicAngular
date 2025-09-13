@@ -12,11 +12,10 @@ export class ChatInputComponent {
 
   submitQuery() {
     const q = this.query.trim();
-    if (q) {
-      this.messageSent.emit(q);
-      this.query = '';
-      this.resetHeight();
-    }
+    if (!q) return;
+    this.messageSent.emit(q);
+    this.query = '';
+    this.resetHeight();
   }
 
   adjustHeight() {
@@ -29,5 +28,5 @@ export class ChatInputComponent {
     el.style.overflowY = el.scrollHeight > max ? 'auto' : 'hidden';
   }
 
-  resetHeight(){ if(this.txt?.nativeElement){ this.txt.nativeElement.style.height='50px'; }}
+  resetHeight(){ if(this.txt?.nativeElement){ this.txt.nativeElement.style.height='48px'; this.txt.nativeElement.style.overflowY='hidden'; }}
 }

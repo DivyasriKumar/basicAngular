@@ -3,6 +3,8 @@
     <div *ngFor="let msg of messages" [ngClass]="msg.role === 'user' ? 'user' : 'bot'" class="message-row">
       <app-chat-message [role]="msg.role" [content]="msg.content" [timestamp]="msg.timestamp"></app-chat-message>
     </div>
+    <!-- anchor used for smooth scrolling to bottom -->
+    <div #anchor style="height:1px;width:100%"></div>
   </ng-container>
   <ng-template #empty>
     <div class="empty">Start the conversation — ask Nova anything</div>

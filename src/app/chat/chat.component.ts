@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 
 type Role = 'user' | 'assistant';
 interface Message { id: string; role: Role; content: string; timestamp: string }
@@ -8,7 +8,7 @@ interface Message { id: string; role: Role; content: string; timestamp: string }
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent {
+export class ChatComponent implements AfterViewInit, OnDestroy {
   messages: Message[] = [];
   isTyping = false;
   suggestions = [
@@ -18,8 +18,32 @@ export class ChatComponent {
     'Explain TypeScript generics with examples'
   ];
 
+  @ViewChild('actionsRef', { static: false }) actionsRef?: ElementRef<HTMLElement>;
+  actionsHeight = 0;
+  private ro?: ResizeObserver;
+
   constructor(){
     this.addAssistant("Hey, I'm Nova — your helpful AI assistant. Ask me anything.");
+  }
+
+  ngAfterViewInit() {
+    if (this.actionsRef) {
+      this.actionsHeight = this.actionsRef.nativeElement.offsetHeight;
+      this.ro = new ResizeObserver(() => {
+        this.actionsHeight = this.actionsRef!.nativeElement.offsetHeight;
+      });
+      this.ro.observe(this.actionsRef.nativeElement);
+    }
+    window.addEventListener('resize', this.onWindowResize);
+  }
+
+  ngOnDestroy() {
+    if (this.ro && this.actionsRef) this.ro.unobserve(this.actionsRef.nativeElement);
+    window.removeEventListener('resize', this.onWindowResize);
+  }
+
+  private onWindowResize = () => {
+    if (this.actionsRef) this.actionsHeight = this.actionsRef.nativeElement.offsetHeight;
   }
 
   private now(){ return new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); }
@@ -31,21 +55,21 @@ export class ChatComponent {
     this.messages.push({ id: this.uuid(), role: 'user', content: trimmed, timestamp: this.now() });
     this.isTyping = true;
     setTimeout(()=>{
-      // this.messages.push({ id: this.uuid(), role: 'assistant', content: this.mockResponse(trimmed), timestamp: this.now() });
+      this.messages.push({ id: this.uuid(), role: 'assistant', content: this.mockResponse(trimmed), timestamp: this.now() });
       this.isTyping = false;
     }, 700 + Math.random()*800);
   }
 
   chooseSuggestion(s: string){ this.handleSend(s); }
 
-  // private mockResponse(q: string){
-  //   const templates = [
-  //     t => `Here’s a concise answer to "${t}":\n\n• Key points listed clearly\n• Practical next steps\n\nWant more detail? Ask me to expand any point.`,
-  //     t => `I’ve thought about your question: "${t}". Here’s a structured response with examples and a short summary.`,
-  //     t => `Great question! For "${t}", consider these approaches: context, trade-offs, and an actionable plan.`
-  //   ];
-  //   return templates[Math.floor(Math.random()*templates.length)](q);
-  // }
+  private mockResponse(q: string){
+    const templates = [
+      (      t: any) => `Here’s a concise answer to "${t}":\n\n• Key points listed clearly\n• Practical next steps\n\nWant more detail? Ask me to expand any point.`,
+      (      t: any) => `I’ve thought about your question: "${t}". Here’s a structured response with examples and a short summary.`,
+      (      t: any) => `Great question! For "${t}", consider these approaches: context, trade-offs, and an actionable plan.`
+    ];
+    return templates[Math.floor(Math.random()*templates.length)](q);
+  }
 
   private uuid(){ return Math.random().toString(36).slice(2,9); }
 }

@@ -4,10 +4,10 @@
 .hero p{color:#6b7280;margin-top:8px}
 .card{background:linear-gradient(180deg, rgba(255,255,255,0.65), rgba(249,250,255,0.95));border-radius:18px;padding:10px;border:1px solid rgba(14,42,71,0.04);box-shadow:0 20px 40px rgba(12,21,39,0.06)}
 /* Make chat-shell a fixed-height flex column so input can be pinned */
-.chat-shell{display:flex;flex-direction:column;height:60vh;max-height:70vh;border-radius:12px;overflow:hidden}
+.chat-shell{display:flex;flex-direction:column;height:60vh;max-height:70vh;border-radius:12px;overflow:hidden;position:relative}
 /* Messages area should grow and scroll */
-.chat-shell > app-chat-window{flex:1;min-height:0}
-.actions{padding:14px;border-top:1px solid #eef3fb;background:linear-gradient(180deg, rgba(255,255,255,0.6), transparent);position:sticky;bottom:0;z-index:20}
+.chat-shell > app-chat-window{flex:1 1 auto;min-height:0}
+.actions{padding:14px;border-top:1px solid #eef3fb;background:linear-gradient(180deg, rgba(255,255,255,0.6), transparent);position:relative;z-index:20}
 .suggestions{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:12px}
 .suggestion{padding:12px;border-radius:12px;border:1px solid rgba(14,42,71,0.04);background:linear-gradient(180deg,#fff,#fbfdff);cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
 .suggestion:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(12,21,39,0.06)}

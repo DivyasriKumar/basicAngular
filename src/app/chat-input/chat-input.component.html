@@ -1,4 +1,15 @@
-<div class="query-box">
-  <textarea #txt [(ngModel)]="query" (input)="adjustHeight()" (keydown.enter)="$event.preventDefault(); submitQuery()" placeholder="Type a message..." rows="1"></textarea>
-  <button class="send" (click)="submitQuery()">&#10148;</button>
+<div class="query-box" role="region" aria-label="Message input">
+  <textarea
+    #txt
+    [(ngModel)]="query"
+    (input)="adjustHeight()"
+    (keydown.enter)="$event.preventDefault(); submitQuery()"
+    placeholder="Type your message..."
+    rows="1"
+    aria-label="Message"
+  ></textarea>
+
+  <button class="send" (click)="submitQuery()" aria-label="Send message">
+    &#10148;
+  </button>
 </div>
