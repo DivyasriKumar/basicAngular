@@ -1,0 +1,8 @@
+<div class="message">
+  <div *ngIf="role==='assistant'" class="avatar">AI</div>
+  <div class="message-bubble" [ngClass]="role==='user' ? 'user-bubble' : 'bot-bubble'">
+    <div class="message-text">{{content}}</div>
+    <div *ngIf="timestamp" class="timestamp">{{timestamp}}</div>
+  </div>
+  <div *ngIf="role==='user'" class="avatar user-avatar">You</div>
+</div>

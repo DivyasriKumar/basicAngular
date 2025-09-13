@@ -1,4 +1,14 @@
-<div class="chat-container">
-  <app-chat-window [messages]="messages"></app-chat-window>
-  <app-chat-input (messageSent)="handleMessage($event)"></app-chat-input>
+<div class="chat-wrapper">
+  <div class="card">
+    <div class="chat-shell">
+      <app-chat-window [messages]="messages"></app-chat-window>
+      <div class="actions">
+        <app-chat-input (messageSent)="handleSend($event)"></app-chat-input>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="suggestions">
+    <button *ngFor="let s of suggestions" class="suggestion" (click)="chooseSuggestion(s)">{{s}}</button>
+  </div> -->
 </div>

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-chat-input',
@@ -8,18 +8,26 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class ChatInputComponent {
   query: string = '';
   @Output() messageSent = new EventEmitter<string>();
+  @ViewChild('txt') txt!: ElementRef<HTMLTextAreaElement>;
 
   submitQuery() {
-    if (this.query.trim()) {
-      this.messageSent.emit(this.query);
+    const q = this.query.trim();
+    if (q) {
+      this.messageSent.emit(q);
       this.query = '';
+      this.resetHeight();
     }
   }
-  adjustHeight(textArea: HTMLTextAreaElement) {
-  textArea.style.height = 'auto'; // reset
-  const maxHeight = 2 * 24; // assuming line-height ~24px
-  const newHeight = Math.min(textArea.scrollHeight, maxHeight);
-  textArea.style.height = `${newHeight}px`;
-  textArea.style.overflowY = textArea.scrollHeight > maxHeight ? 'scroll' : 'hidden';
-}
+
+  adjustHeight() {
+    const el = this.txt?.nativeElement;
+    if (!el) return;
+    el.style.height = 'auto';
+    const max = 120; // px
+    const next = Math.min(el.scrollHeight, max);
+    el.style.height = next + 'px';
+    el.style.overflowY = el.scrollHeight > max ? 'auto' : 'hidden';
+  }
+
+  resetHeight(){ if(this.txt?.nativeElement){ this.txt.nativeElement.style.height='50px'; }}
 }

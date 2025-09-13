@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { QueryInputComponent } from './query-input/query-input.component';
 import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [

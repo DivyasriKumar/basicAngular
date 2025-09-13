@@ -1,5 +1,10 @@
 <div class="messages" #scrollMe>
-  <div *ngFor="let msg of messages" [ngClass]="msg.sender">
-    <div class="message-bubble">{{ msg.text }}</div>
-  </div>
+  <ng-container *ngIf="messages?.length; else empty">
+    <div *ngFor="let msg of messages" [ngClass]="msg.role === 'user' ? 'user' : 'bot'" class="message-row">
+      <app-chat-message [role]="msg.role" [content]="msg.content" [timestamp]="msg.timestamp"></app-chat-message>
+    </div>
+  </ng-container>
+  <ng-template #empty>
+    <div class="empty">Start the conversation — ask Nova anything</div>
+  </ng-template>
 </div>

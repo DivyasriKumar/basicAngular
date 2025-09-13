@@ -1,9 +1,10 @@
-.chat-container {
-   min-height: 450px;
-  height: 100%;
-  max-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  overflow: hidden;
-}
+.chat-wrapper{max-width:980px;margin:28px auto;display:flex;flex-direction:column;gap:18px;padding:0 12px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.65), rgba(249,250,255,0.95));border-radius:18px;padding:10px;border:1px solid rgba(14,42,71,0.04);box-shadow:0 20px 40px rgba(12,21,39,0.06)}
+.chat-shell{display:flex;flex-direction:column;min-height:480px;border-radius:12px;overflow:hidden}
+.actions{padding:14px;border-top:1px solid #eef3fb;background:linear-gradient(180deg, rgba(255,255,255,0.6), transparent)}
+.suggestions{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:12px}
+.suggestion{padding:12px;border-radius:12px;border:1px solid rgba(14,42,71,0.04);background:linear-gradient(180deg,#fff,#fbfdff);cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.suggestion:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(12,21,39,0.06)}
+
+/* alias for compatibility */
+.chat-container{min-height:450px;height:100%;max-height:100vh;display:flex;flex-direction:column;border-radius:12px;border:1px solid #e6eef8;overflow:hidden}
